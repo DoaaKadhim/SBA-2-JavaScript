@@ -1,9 +1,10 @@
-// Example data for testing
+// The provided course information.
 const CourseInfo = {
   id: 451,
   name: "Introduction to JavaScript"
 };
 
+// The provided assignment group.
 const AssignmentGroup = {
   id: 12345,
   name: "Fundamentals of JavaScript",
@@ -25,12 +26,13 @@ const AssignmentGroup = {
     {
       id: 3,
       name: "Code the World",
-      due_at: "2024-08-07",
+      due_at: "3156-11-15",
       points_possible: 500
     }
   ]
 };
 
+// The provided learner submission data.
 const LearnerSubmissions = [
   {
     learner_id: 125,
@@ -114,6 +116,9 @@ function getLearnerData(course, ag, submissions) {
         }
         const isSubmissionLate = isLate(submitted_at, dueDate);
         const finalScore = isSubmissionLate ? score - (pointsPossible * 0.10) : score;
+        if (isSubmissionLate) {
+          throw new Error(`Submission for assignment ${assignment_id} by learner ${learner_id} is late`);
+        }
 
         if (!learnerScores[learner_id]) {
           learnerScores[learner_id] = { totalWeight: 0, totalScore: 0, scores: {} };
