@@ -103,6 +103,7 @@ function getLearnerData(course, ag, submissions) {
     const submission = submissions[index];
     try {
       const { learner_id, assignment_id, submission: { submitted_at, score } } = submission;
+
       //check the valid submissin .
       switch (true) {
         case typeof learner_id !== 'number':
@@ -115,8 +116,6 @@ function getLearnerData(course, ag, submissions) {
           console.error(`Assignment ${assignment_id} not found`);
           index++;
           continue;
-        default:
-          break;
       }
 
       const pointsPossible = assignmentPoints[assignment_id];
@@ -161,7 +160,7 @@ function getLearnerData(course, ag, submissions) {
     }
     index++;
   }
-
+  //iterate through learner.
   const result = [];
   Object.keys(learnerScores).forEach(learner_id => {
     const data = learnerScores[learner_id];
@@ -189,6 +188,3 @@ function calculateWeightedAverage(learnerData) {
 
 const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
 console.log(result);
-
-
-
