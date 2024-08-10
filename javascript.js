@@ -82,7 +82,7 @@ function getLearnerData(course, ag, submissions) {
     throw new Error('assignment group does not belong to its course');
   }
 
-  //check the type of assignment points 
+  //check the type of assignment points.
   const assignmentPoints = {};
   ag.assignments.forEach(assignment => {
     switch (true) {
